@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcwhi6vrtelmj"]
+[gd_scene load_steps=15 format=3 uid="uid://bcwhi6vrtelmj"]
 
 [ext_resource type="Texture2D" uid="uid://3nm3kbj7goho" path="res://Textures/Ceiling.png" id="1_bteem"]
 [ext_resource type="Texture2D" uid="uid://wixedqcachbg" path="res://Textures/Wall.png" id="1_p4fnb"]
+[ext_resource type="PackedScene" uid="uid://c44tfbq6oqdrx" path="res://Player/player.tscn" id="1_uph0i"]
 [ext_resource type="Texture2D" uid="uid://cwqqbf8hjyequ" path="res://Textures/Ground.png" id="3_uwfla"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oskyw"]
@@ -46,23 +47,25 @@ uv1_triplanar = true
 
 [node name="Building" type="Node3D"]
 
+[node name="Player" parent="." instance=ExtResource("1_uph0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63451, 0, 3.90786)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5.25901, 0)
 shadow_enabled = true
 
 [node name="Stairs" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -1.29547, -0.189868, -0.635966)
+use_collision = true
 size = Vector3(2.5, 0.4, 6.422)
 
 [node name="Stairs2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -1.29547, 3.28273, -1.11806)
 size = Vector3(2.5, 0.4, 5.81996)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.526354, -0.36182, 0.76944, 0.204286, 0.932248, 0.298632, -0.82536, 0, 0.564607, 15.9594, 4.23914, 9.86065)
-
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6767, -2.09031, -2.63922)
+use_collision = true
 size = Vector3(18.1591, 1, 17.5736)
 
 [node name="FirstFloor" type="Node3D" parent="."]
@@ -70,6 +73,7 @@ size = Vector3(18.1591, 1, 17.5736)
 [node name="Corner" type="CSGBox3D" parent="FirstFloor"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 10.7658, 0, 5.16154)
 material_override = SubResource("StandardMaterial3D_oskyw")
+use_collision = true
 size = Vector3(0.3, 3.2, 2.5083)
 
 [node name="Entrance" type="CSGBox3D" parent="FirstFloor/Corner"]
@@ -85,6 +89,7 @@ mesh = SubResource("CylinderMesh_cv4fo")
 [node name="OuterWall2" type="CSGBox3D" parent="FirstFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5964, -0.00668478, -2.53715)
 material_override = SubResource("StandardMaterial3D_j2ucu")
+use_collision = true
 size = Vector3(0.3, 3.2, 13.8384)
 
 [node name="Window" type="CSGBox3D" parent="FirstFloor/OuterWall2"]
@@ -110,6 +115,7 @@ size = Vector3(0.4, 1.4, 0.8)
 [node name="Wall" type="CSGBox3D" parent="FirstFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.45632)
 material_override = SubResource("StandardMaterial3D_jh3vm")
+use_collision = true
 size = Vector3(0.2, 3.2, 16.9058)
 
 [node name="Door" type="CSGMesh3D" parent="FirstFloor/Wall"]
@@ -120,6 +126,7 @@ mesh = SubResource("BoxMesh_6rx4d")
 [node name="OuterWall" type="CSGBox3D" parent="FirstFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78638, 0, 6)
 material_override = SubResource("StandardMaterial3D_v2siv")
+use_collision = true
 size = Vector3(16.4272, 3.2, 0.3)
 
 [node name="Window4" type="CSGBox3D" parent="FirstFloor/OuterWall"]
@@ -155,6 +162,7 @@ size = Vector3(0.2, 3.2, 5.9585)
 [node name="CSGBox3D3" type="CSGBox3D" parent="FirstFloor"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.632, 0, -3.67798)
 material_override = SubResource("StandardMaterial3D_rmiqd")
+use_collision = true
 size = Vector3(0.2, 3.2, 5.73438)
 
 [node name="Door2" type="CSGMesh3D" parent="FirstFloor/CSGBox3D3"]
@@ -165,11 +173,13 @@ mesh = SubResource("BoxMesh_6rx4d")
 [node name="CSGBox3D5" type="CSGBox3D" parent="FirstFloor"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.18735, 0, -11.0083)
 material_override = SubResource("StandardMaterial3D_rmiqd")
+use_collision = true
 size = Vector3(0.2, 3.2, 6.57666)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="FirstFloor"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.51455, 0, -8.49907)
 material_override = SubResource("StandardMaterial3D_rmiqd")
+use_collision = true
 size = Vector3(0.2, 3.2, 18.0599)
 
 [node name="Door3" type="CSGMesh3D" parent="FirstFloor/CSGBox3D4"]
@@ -180,6 +190,7 @@ mesh = SubResource("BoxMesh_6rx4d")
 [node name="CSGBox3D2" type="CSGBox3D" parent="FirstFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.38743, 0, -2.59845)
 material_override = SubResource("StandardMaterial3D_rmiqd")
+use_collision = true
 size = Vector3(0.2, 3.2, 17.0725)
 
 [node name="SecondFloor" type="Node3D" parent="."]
@@ -187,6 +198,7 @@ size = Vector3(0.2, 3.2, 17.0725)
 [node name="OuterWall3" type="CSGBox3D" parent="SecondFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5964, 2.99332, -2.53715)
 material_override = SubResource("StandardMaterial3D_j2ucu")
+use_collision = true
 size = Vector3(0.3, 3.2, 13.8384)
 
 [node name="Window" type="CSGBox3D" parent="SecondFloor/OuterWall3"]
@@ -212,6 +224,7 @@ size = Vector3(0.4, 1.4, 0.8)
 [node name="Wall2" type="CSGBox3D" parent="SecondFloor"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 3, -2.45632)
 material_override = SubResource("StandardMaterial3D_jh3vm")
+use_collision = true
 size = Vector3(0.2, 3.2, 16.9058)
 
 [node name="Door" type="CSGMesh3D" parent="SecondFloor/Wall2"]
@@ -222,6 +235,7 @@ mesh = SubResource("BoxMesh_6rx4d")
 [node name="OuterWall4" type="CSGBox3D" parent="SecondFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78638, 3, 6)
 material_override = SubResource("StandardMaterial3D_v2siv")
+use_collision = true
 size = Vector3(16.4272, 3.2, 0.3)
 
 [node name="Window4" type="CSGBox3D" parent="SecondFloor/OuterWall4"]
@@ -257,11 +271,13 @@ size = Vector3(0.2, 3.2, 9.80371)
 [node name="CSGBox3D9" type="CSGBox3D" parent="SecondFloor"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.3043, 3, -3.65091)
 material_override = SubResource("StandardMaterial3D_rmiqd")
+use_collision = true
 size = Vector3(0.2, 3.2, 2.73889)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="SecondFloor"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.54934, 3, -8.49907)
 material_override = SubResource("StandardMaterial3D_cjbry")
+use_collision = true
 size = Vector3(0.2, 3.2, 17.9138)
 
 [node name="Corner2" type="CSGBox3D" parent="SecondFloor"]
@@ -278,6 +294,7 @@ size = Vector3(0.4, 1.4, 0.8)
 [node name="Ceiling" type="CSGBox3D" parent="CeilingAndFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96751, 1.55904, -1.33458)
 material_override = SubResource("StandardMaterial3D_rvpy2")
+use_collision = true
 size = Vector3(11.5228, 0.0675964, 14.3994)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CeilingAndFloor/Ceiling"]
@@ -298,6 +315,7 @@ size = Vector3(3.75972, 0.0675964, 9.70892)
 [node name="Ceiling4" type="CSGBox3D" parent="CeilingAndFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31732, 1.55904, 4.04716)
 material_override = SubResource("StandardMaterial3D_rvpy2")
+use_collision = true
 size = Vector3(2.59542, 0.0675964, 3.99117)
 
 [node name="Floor2ndFloor" type="CSGBox3D" parent="CeilingAndFloor"]
