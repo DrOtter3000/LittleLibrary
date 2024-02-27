@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://xgqjnu414ov"]
+
+[ext_resource type="Material" uid="uid://m1b43nl0oqr8" path="res://Materials/metallic_dark.tres" id="1_f4bwb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3wsf"]
+albedo_color = Color(0.658824, 0.658824, 0.658824, 1)
+
+[node name="Keyboard" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.990543, -0.137203, 0, 0.137203, 0.990543, 0, 0, 0)
+size = Vector3(0.44, 0.022, 0.15)
+material = SubResource("StandardMaterial3D_m3wsf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04459, 0.0111587, 0.01439)
+size = Vector3(0.329597, 0.0112305, 0.102539)
+material = ExtResource("1_f4bwb")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16908, 0.0111587, 0.01439)
+size = Vector3(0.0599995, 0.0112305, 0.102539)
+material = ExtResource("1_f4bwb")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.00001, 1.49012e-08, 0, -1.49012e-08, 1.00001, -0.00485802, 0.0111587, -0.0519012)
+size = Vector3(0.409061, 0.0112305, 0.00732422)
+material = ExtResource("1_f4bwb")

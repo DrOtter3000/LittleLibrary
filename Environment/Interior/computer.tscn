@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwunhv7v1ky8w"]
+
+[ext_resource type="Material" uid="uid://m1b43nl0oqr8" path="res://Materials/metallic_dark.tres" id="1_juku4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0sqgd"]
+top_radius = 0.12
+bottom_radius = 0.12
+height = 0.02
+
+[node name="Computer" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165449, -0.237732, 0.487366)
+size = Vector3(0.5, 0.12, 0.4)
+material = ExtResource("1_juku4")
+
+[node name="Monitor" type="Node3D" parent="."]
+transform = Transform3D(0.789748, 0.116659, 0.602236, 0, 0.98175, -0.190175, -0.613431, 0.15019, 0.775336, 0.0846083, 0.349999, 0.0241774)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Monitor"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, -7.45058e-09, 1, 0, 0, 0)
+size = Vector3(0.5, 0.4, 0.025)
+material = ExtResource("1_juku4")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Monitor/CSGBox3D2"]
+transform = Transform3D(1, -2.23517e-08, 0, 7.45058e-09, 1, -7.45058e-09, 2.98023e-08, 1.86265e-08, 1, 0, 0, -0.0181017)
+operation = 2
+size = Vector3(0.475, 0.38, 0.025)
+material = ExtResource("1_juku4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Monitor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0194191)
+size = Vector3(0.3, 0.3, 0.02)
+material = ExtResource("1_juku4")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Monitor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.220244, 0.0194191)
+size = Vector3(0.15, 0.148486, 0.02)
+material = ExtResource("1_juku4")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0846083, 0.0722252, 0.0241774)
+mesh = SubResource("CylinderMesh_0sqgd")
+material = ExtResource("1_juku4")
